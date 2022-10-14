@@ -12,7 +12,7 @@
 ```
 1. Start the customer service using command: mvn spring-boot:run
 2. Start the front api service (reference link given below)
-3. Open browser: http://localhost:8080/customerDetails/1
+3. Open browser: http://localhost:8080/customerDetails/1 (Remember: start the Front api service first !)
 ```
 ###### Reference: [Front api service](https://github.com/rkdutta/otel-demo-api-service)
 
