@@ -45,7 +45,7 @@ spring:
             probability: 1.0 # allowed values between 0.0 - 0.1
 ```
 
-3. Start a zipkin server using Docker
+3. Start a zipkin server using Docker (ignore if already started)
 ```
 docker network create tracing
 docker run -d --rm -it --name zipkin --network tracing -p 9411:9411 openzipkin/zipkin:latest
@@ -60,7 +60,7 @@ mvn spring-boot:run
 ```
 export OTEL_EXPORTER_ZIPKIN_ENDPOINT=http://localhost:9411/api/v2/spans
 export OTEL_TRACES_EXPORTER=zipkin
-export OTEL_SERVICE_NAME=front-service
+export OTEL_SERVICE_NAME=customer-service
 java -javaagent:opentelemetry-javaagent.jar  -jar target/*.jar
 ```
 
