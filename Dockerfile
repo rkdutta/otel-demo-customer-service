@@ -1,0 +1,14 @@
+FROM openjdk:19
+
+ARG JAR_FILE=target/*.jar
+ARG APP_USER=spring
+ARG WORK_DIR="/app"
+
+WORKDIR ${WORK_DIR}
+COPY ${JAR_FILE} ${WORK_DIR}/app.jar
+
+RUN groupadd -f ${APP_USER} && adduser ${APP_USER} -g ${APP_USER}
+
+EXPOSE 8081
+USER ${APP_USER}:${APP_USER}
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
