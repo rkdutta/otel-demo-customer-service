@@ -18,10 +18,12 @@
 
 ### Execute using Docker
 ```
-
+1. Start the customer service
 docker network create tracing
 docker pull rduttaxebia/otel-demo-customer-service:latest
 docker run --name customer-service --network tracing -p 8081:8081 rduttaxebia/otel-demo-customer-service:latest
+
+2. Start the front-api-service using Docker. Reference link is mentioned above.
 ```
 
 ## Enable OpenTelemetry
