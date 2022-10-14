@@ -1,6 +1,14 @@
 # Customer Service
 #### simulating 3rd party backend api
 
+### Microservice Architecture
+```
+ --------------------             ------------------            ------------------      
+| Client(UI/Browser) | =======> | Front api service | =======> | Customer service |   
+ --------------------             ------------------            ------------------
+```
+
+###### Reference: [Front api service](https://github.com/rkdutta/otel-demo-api-service)
 
 ### Execute 
 ```
