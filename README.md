@@ -40,7 +40,7 @@ docker run --name customer-service --network tracing -p 8081:8081 rduttaxebia/ot
 		</dependency>
 ```
 
-2. Add/append the following in [application.yml](/src/main/resources/application.yml)
+2. Add/append the following in [application.yml](src/main/resources/application.yml)
 
 ```yaml
 server.port: 8081
