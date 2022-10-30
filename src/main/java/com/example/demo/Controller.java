@@ -34,7 +34,7 @@ public class Controller {
         customer.setId(customerId);
         customer.setName(NAMES.get((int) customerId));
 
-        registry.counter("visits.customers.total", "name", "hits").increment();
+        registry.counter("visits.total", "name", "customer").increment();
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
@@ -48,7 +48,7 @@ public class Controller {
         address.setId(customerId);
         address.setStreet(STREETS.get((int) customerId));
 
-        registry.counter("visits.address.total", "name", "hits").increment();
+        registry.counter("visits.total", "name", "address").increment();
         return new ResponseEntity<>(address, HttpStatus.OK);
     }
 
