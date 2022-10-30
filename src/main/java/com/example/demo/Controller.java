@@ -1,7 +1,9 @@
 package com.example.demo;
 
+import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,12 @@ public class Controller {
 
     private Logger logger = LoggerFactory.getLogger(Controller.class);
 
+    private final MeterRegistry registry;
+
+    @Autowired
+    public Controller(MeterRegistry registry) {
+        this.registry = registry;
+    }
     @GetMapping(path = "customers/{id}")
     public ResponseEntity<Customer> getCustomer(@PathVariable("id") long customerId) {
         logger.info("GETTING CUSTOMER WITH ID {}", customerId);
@@ -26,6 +34,7 @@ public class Controller {
         customer.setId(customerId);
         customer.setName(NAMES.get((int) customerId));
 
+        registry.counter("visits.customers.total", "name", "hits").increment();
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
@@ -39,6 +48,7 @@ public class Controller {
         address.setId(customerId);
         address.setStreet(STREETS.get((int) customerId));
 
+        registry.counter("visits.address.total", "name", "hits").increment();
         return new ResponseEntity<>(address, HttpStatus.OK);
     }
 
