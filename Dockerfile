@@ -9,6 +9,6 @@ COPY ${JAR_FILE} ${WORK_DIR}/app.jar
 
 RUN groupadd -f ${APP_USER} && adduser ${APP_USER} -g ${APP_USER}
 
-EXPOSE 8081
+EXPOSE 8080
 USER ${APP_USER}:${APP_USER}
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
